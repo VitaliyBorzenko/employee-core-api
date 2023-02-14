@@ -17,32 +17,36 @@ import java.util.List;
 @RequestMapping("/employee")
 public class EmployeeController {
     @Autowired
-    private EmployeeService employeeServise;
+    private EmployeeService employeeServiсe;
 
+    @GetMapping("/check")
+    public String check(){
+        return "employee-core-api is working";
+    }
     @PostMapping
     public ResponseEntity<String> createEmployee(@Valid @RequestBody EmployeeModel employeeModel){
-        employeeServise.createEmployee(employeeModel);
+        employeeServiсe.createEmployee(employeeModel);
         return new ResponseEntity<String>("Successfully created", HttpStatus.OK);
     }
     @GetMapping("/all")
     public List<EmployeeModel> getAllEmployees(){
-        return employeeServise.getAllEmployees();
+        return employeeServiсe.getAllEmployees();
     }
 
     @GetMapping("/{employeeId}")
     public EmployeeModel getEmployeeById(@PathVariable String emploteeId){
-        return employeeServise.getEmployeeById(emploteeId);
+        return employeeServiсe.getEmployeeById(emploteeId);
     }
 
     @PutMapping("/{employeeId}")
     public ResponseEntity<String> updateEmployeeById(@PathVariable String employeeId,@Valid @RequestBody EmployeeModel employeeModel){
-        employeeServise.updateEmployeeById(employeeId, employeeModel);
+        employeeServiсe.updateEmployeeById(employeeId, employeeModel);
         return new ResponseEntity<String>("Successfully update", HttpStatus.OK) ;
     }
 
     @DeleteMapping("/{employeeId}")
     public ResponseEntity<String> deleteEmployeeById(@PathVariable String employeeId){
-        employeeServise.deleteEmployeeById(employeeId);
+        employeeServiсe.deleteEmployeeById(employeeId);
         return new ResponseEntity<String>("Successfully deleted",HttpStatus.OK);
     }
 

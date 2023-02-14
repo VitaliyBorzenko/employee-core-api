@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
     private static final HashMap<String, EmployeeModel> employeeMap = new HashMap<>();
 
